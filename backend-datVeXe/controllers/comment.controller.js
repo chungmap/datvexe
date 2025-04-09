@@ -1,7 +1,13 @@
-const {Comment, User, PassengerCarCompany, Rate} = require("../models");
+const { Comment, User, PassengerCarCompany, Rate } = require("../models");
+
+
+//quang huy
+
+
+
 
 const createComment = async (req, res) => {
-	const {content, userId, passengerId} = req.body;
+	const { content, userId, passengerId } = req.body;
 	try {
 		const newCmt = await Comment.create({
 			content,
@@ -14,7 +20,7 @@ const createComment = async (req, res) => {
 	}
 };
 const getAllComment = async (req, res) => {
-	const {passengerId} = req.query;
+	const { passengerId } = req.query;
 	try {
 		if (passengerId) {
 			const commentList = await Comment.findAll({
@@ -59,8 +65,8 @@ const getAllComment = async (req, res) => {
 };
 
 const getAllCommentUser = async (req, res) => {
-	const {id} = req.params;
-	const {passengerId} = req.query;
+	const { id } = req.params;
+	const { passengerId } = req.query;
 	try {
 		if (passengerId) {
 			const commentList = await Comment.findAll({
@@ -106,7 +112,7 @@ const getAllCommentUser = async (req, res) => {
 };
 
 const getDetailComment = async (req, res) => {
-	const {id} = req.params;
+	const { id } = req.params;
 
 	try {
 		const detailComment = await Comment.findOne({
@@ -120,7 +126,7 @@ const getDetailComment = async (req, res) => {
 	}
 };
 const deleteComment = async (req, res) => {
-	const {id} = req.params;
+	const { id } = req.params;
 	try {
 		await Comment.destroy({
 			where: {
@@ -133,11 +139,11 @@ const deleteComment = async (req, res) => {
 	}
 };
 const updateComment = async (req, res) => {
-	const {id} = req.params;
-	const {content, userId, passengerId} = req.body;
+	const { id } = req.params;
+	const { content, userId, passengerId } = req.body;
 	try {
 		await Comment.update(
-			{content, userId, passengerId},
+			{ content, userId, passengerId },
 			{
 				where: {
 					id,
